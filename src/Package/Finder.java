@@ -16,7 +16,7 @@ public class Finder {
     public void find() {
         File dir = new File(directory);
         for(File item : Objects.requireNonNull(dir.listFiles())){
-            System.out.println(item.getName() + "  \t folder");
+            System.out.println(item.getName());
         }
     }
 
