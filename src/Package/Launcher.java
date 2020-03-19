@@ -1,5 +1,4 @@
 package Package;
-
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -15,7 +14,7 @@ public class Launcher {
         System.out.println("Введите команду по образцу " + ANSI_YELLOW + "find [-r] [-d directory] filename.txt" + ANSI_RESET);
         Scanner scanner = new Scanner(System.in);
         String userCommand = scanner.nextLine();
-        if (!Pattern.matches("find(\\s-r)?\\s(-d)\\s([A-z](/)?)+\\s(.)+", userCommand)) System.out.println("Incorrect input");
+        if (!Pattern.matches("find(\\s-r)?\\s(-d)\\s/([A-z]+/)+\\s(.)+", userCommand)) System.out.println("Incorrect input");
         Pattern pattern = Pattern.compile("\\s"); //разбивка по пробелу
         String[] parts = pattern.split(userCommand);
         if (parts[1].equals("-r")) logicR = true;

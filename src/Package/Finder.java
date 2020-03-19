@@ -15,11 +15,11 @@ public class Finder {
 
     public void find() {
         File dir = new File(directory);
-        for(File item : Objects.requireNonNull(dir.listFiles())){
+        for(File item : dir.listFiles()){
             System.out.println(item.getName());
         }
     }
 
 }
 
-//find -r -d Users/Admin/ files
+//command for test       find -r -d /Users/Admin/files/forTestJava/ picture.png
