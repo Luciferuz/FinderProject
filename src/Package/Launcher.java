@@ -17,9 +17,17 @@ public class Launcher {
         if (!Pattern.matches("find(\\s-r)?\\s(-d)\\s/([A-z]+/)+\\s(.)+", userCommand)) System.out.println("Incorrect input");
         Pattern pattern = Pattern.compile("\\s"); //разбивка по пробелу
         String[] parts = pattern.split(userCommand);
-        if (parts[1].equals("-r")) logicR = true;
-        directory = parts[3];
-        filename = parts[4];
+
+        if (parts[1].equals("-r")) {
+            logicR = true;
+            directory = parts[3];
+            filename = parts[4];
+        } else {
+            logicR = false;
+            directory = parts[2];
+            filename = parts[3];
+        }
+
     }
 
     public boolean getLogicR() {
