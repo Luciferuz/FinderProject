@@ -4,28 +4,33 @@ import java.util.regex.Pattern;
 
 public class Launcher {
 
-    private static final String ANSI_RESET = "\u001B[0m";
-    private static final String ANSI_YELLOW = "\u001B[33m"; //для цвета в консоли
     private static boolean logicR = false;
     private static String directory;
     private static String filename;
 
+
     public void launcher() {
-        System.out.println("Введите команду по образцу " + ANSI_YELLOW + "find [-r] [-d directory] filename.txt" + ANSI_RESET);
+        System.out.println("Введите команду по образцу find [-r] [-d directory] filename.txt");
         Scanner scanner = new Scanner(System.in);
         String userCommand = scanner.nextLine();
-        if (!Pattern.matches("find(\\s-r)?\\s(-d)\\s/([A-z]+/)+\\s(.)+", userCommand)) System.out.println("Incorrect input");
+
+        if (!Pattern.matches("find(\\s-r)?\\s(-d)\\s/([A-z]+/)+(\\s-r)?\\s(.)+", userCommand)) throw new IllegalArgumentException();
+
         Pattern pattern = Pattern.compile("\\s"); //разбивка по пробелу
         String[] parts = pattern.split(userCommand);
+        if (parts.length != 4 && parts.length != 5) throw new IllegalArgumentException();
 
-        if (parts[1].equals("-r")) {
-            logicR = true;
-            directory = parts[3];
-            filename = parts[4];
-        } else {
-            logicR = false;
-            directory = parts[2];
-            filename = parts[3];
+        for (int index = 1; index < parts.length; index++) {
+            if (parts[index].equals("-r")) {
+                logicR = true;
+                continue;
+            }
+            if (parts[index].equals("-d")) {
+                directory = parts[index + 1];
+                index++;
+                continue;
+            }
+            filename = parts[index];
         }
 
     }

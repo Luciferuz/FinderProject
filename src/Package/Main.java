@@ -9,6 +9,6 @@ public class Main {
         String directory = new Launcher().getDirectory();
         String filename = new Launcher().getFilename();
 
-        new Finder(logicR, directory, filename).find();
+        System.out.println(new Finder(logicR, directory, filename).find());
     }
 }
