@@ -1,5 +1,6 @@
 package Package;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class Launcher {
@@ -7,30 +8,37 @@ public class Launcher {
     private static boolean logicR = false;
     private static String directory;
     private static String filename;
+    private static String[] args;
 
+    public Launcher(String[] arguments) {
+        args = arguments;
+    }
+
+    public Launcher() {
+
+    }
 
     public void launcher() {
-        System.out.println("Введите команду по образцу find [-r] [-d directory] filename.txt");
-        Scanner scanner = new Scanner(System.in);
-        String userCommand = scanner.nextLine();
+        ArrayList<String> userCommand = new ArrayList<>();
+        userCommand.addAll(Arrays.asList(args));
 
-        if (!Pattern.matches("find(\\s-r)?\\s(-d)\\s/([A-z]+/)+(\\s-r)?\\s(.)+", userCommand)) throw new IllegalArgumentException();
 
-        Pattern pattern = Pattern.compile("\\s"); //разбивка по пробелу
-        String[] parts = pattern.split(userCommand);
-        if (parts.length != 4 && parts.length != 5) throw new IllegalArgumentException();
+        String userCommandString = Arrays.toString(args);
+        if (!Pattern.matches("find(\\s-r)?\\s(-d)\\s/([A-z]+/)+(\\s-r)?\\s(.)+", userCommandString)) throw new IllegalArgumentException();
 
-        for (int index = 1; index < parts.length; index++) {
-            if (parts[index].equals("-r")) {
+        if (userCommand.size() != 4 && userCommand.size() != 5) throw new IllegalArgumentException();
+
+        for (int index = 1; index < userCommand.size(); index++) {
+            if (userCommand.get(index).equals("-r")) {
                 logicR = true;
                 continue;
             }
-            if (parts[index].equals("-d")) {
-                directory = parts[index + 1];
+            if (userCommand.get(index).equals("-d")) {
+                directory = userCommand.get(index + 1);
                 index++;
                 continue;
             }
-            filename = parts[index];
+            filename = userCommand.get(index);
         }
 
     }

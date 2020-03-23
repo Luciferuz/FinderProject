@@ -3,7 +3,8 @@ package Package;
 public class Main {
 
     public static void main(String[] args) {
-        new Launcher().launcher();
+        System.out.println(args);
+        new Launcher(args).launcher();
 
         boolean logicR = new Launcher().getLogicR();
         String directory = new Launcher().getDirectory();
