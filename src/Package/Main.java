@@ -3,7 +3,6 @@ package Package;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(args);
         new Launcher(args).launcher();
 
         boolean logicR = new Launcher().getLogicR();

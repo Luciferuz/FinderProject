@@ -19,11 +19,8 @@ public class Launcher {
     }
 
     public void launcher() {
-        ArrayList<String> userCommand = new ArrayList<>();
-        userCommand.addAll(Arrays.asList(args));
-
-
-        String userCommandString = Arrays.toString(args);
+        ArrayList<String> userCommand = new ArrayList<>(Arrays.asList(args));
+        String userCommandString = Arrays.toString(args).replaceAll(",", "").replaceAll("\\[", "").replaceAll("]", "");
         if (!Pattern.matches("find(\\s-r)?\\s(-d)\\s/([A-z]+/)+(\\s-r)?\\s(.)+", userCommandString)) throw new IllegalArgumentException();
 
         if (userCommand.size() != 4 && userCommand.size() != 5) throw new IllegalArgumentException();
