@@ -1,6 +1,6 @@
 package Package;
 
-public class Main {
+public class FinderProject {
 
     public static void main(String[] args) {
         new Launcher(args).launcher();

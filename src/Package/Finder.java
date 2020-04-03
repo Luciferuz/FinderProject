@@ -36,8 +36,7 @@ public class Finder {
         }
     }
 
-
 }
 
-//command for test        Java src/Package/Main.java find -r -d /Users/Admin/files/forTestJava/ picture.png
+//command for test        Java src/Package/FinderProject.java find -r -d /Users/Admin/files/forTestJava/ picture.png
 
