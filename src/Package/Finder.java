@@ -1,12 +1,13 @@
 package Package;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Finder {
     private boolean logicR;
     private String directory;
     private String filename;
-    private ArrayList<File> listOfFiles = new ArrayList<>();
+    private List<File> listOfFiles = new ArrayList<>();
 
     public Finder(boolean logicR, String directory, String filename) {
         this.logicR = logicR;
@@ -14,7 +15,8 @@ public class Finder {
         this.filename = filename;
     }
 
-    public ArrayList<File> find() {
+    public List<File> find() {
+        listOfFiles.clear(); //предварительно очистил список
         if (logicR) findWithR(new File(directory));
         else findNoR();
         return listOfFiles;

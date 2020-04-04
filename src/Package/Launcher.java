@@ -1,33 +1,31 @@
 package Package;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Launcher {
 
-    private static boolean logicR = false;
-    private static String directory;
-    private static String filename;
-    private static String[] args;
+    private boolean logicR = false;
+    private String directory = System.getProperty("user.dir"); //если -d нет, то работа в текущем каталоге
+    private String filename;
+    private String[] args;
 
     public Launcher(String[] arguments) {
         args = arguments;
+        launcher(); //из конструктора вызвал метод лаунчер
     }
 
-    public Launcher() {
 
-    }
-
-    public void launcher() {
-        ArrayList<String> userCommand = new ArrayList<>(Arrays.asList(args));
-        String userCommandString = Arrays.toString(args).replaceAll(",", "").replaceAll("\\[", "").replaceAll("]", "");
+    private void launcher() {
+        List<String> userCommand = new ArrayList<>(Arrays.asList(args));
         //System.out.println(userCommand);
         //System.out.println(userCommand.size());
-        //System.out.println(userCommandString);
-        if (!Pattern.matches("find(\\s-r)?\\s(-d)\\s/([A-z]+/)+(\\s-r)?\\s(.)+", userCommandString)) throw new IllegalArgumentException();
-        if (userCommand.size() != 4 && userCommand.size() != 5) throw new IllegalArgumentException();
+        if (userCommand.size() > 5 || userCommand.size() < 2) throw new IllegalArgumentException();
 
-        for (int index = 1; index < userCommand.size(); index++) {
+        for (int index = 1; index < userCommand.size() - 1; index++) {
+            //System.out.println(userCommand.get(index));
+            if (!userCommand.get(index).equals("-r") && !userCommand.get(index).equals("-d")) throw new IllegalArgumentException();
             if (userCommand.get(index).equals("-r")) {
                 logicR = true;
                 continue;
@@ -37,9 +35,8 @@ public class Launcher {
                 index++;
                 continue;
             }
-            filename = userCommand.get(index);
         }
-
+        filename = userCommand.get(userCommand.size() - 1);
     }
 
     public boolean getLogicR() {

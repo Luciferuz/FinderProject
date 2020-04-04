@@ -3,11 +3,11 @@ package Package;
 public class FinderProject {
 
     public static void main(String[] args) {
-        new Launcher(args).launcher();
+        Launcher start = new Launcher(args);
 
-        boolean logicR = new Launcher().getLogicR();
-        String directory = new Launcher().getDirectory();
-        String filename = new Launcher().getFilename();
+        boolean logicR = start.getLogicR();
+        String directory = start.getDirectory();
+        String filename = start.getFilename();
 
         System.out.println(new Finder(logicR, directory, filename).find());
     }
