@@ -1,4 +1,6 @@
 package Package;
+import java.io.File;
+import java.util.List;
 
 public class FinderProject {
 
@@ -9,6 +11,9 @@ public class FinderProject {
         String directory = start.getDirectory();
         String filename = start.getFilename();
 
-        System.out.println(new Finder(logicR, directory, filename).find());
+        List<File> list = new Finder(logicR, directory, filename).find();
+        for (File item : list) {
+            System.out.println(item);
+        }
     }
 }

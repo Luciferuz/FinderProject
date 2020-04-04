@@ -41,4 +41,3 @@ public class Finder {
 }
 
 //command for test        Java src/Package/FinderProject.java find -r -d /Users/Admin/files/forTestJava/ picture.png
-

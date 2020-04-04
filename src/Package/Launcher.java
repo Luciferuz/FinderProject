@@ -15,15 +15,11 @@ public class Launcher {
         launcher(); //из конструктора вызвал метод лаунчер
     }
 
-
     private void launcher() {
         List<String> userCommand = new ArrayList<>(Arrays.asList(args));
-        //System.out.println(userCommand);
-        //System.out.println(userCommand.size());
-        if (userCommand.size() > 5 || userCommand.size() < 2) throw new IllegalArgumentException();
+        if (userCommand.size() > 4 || userCommand.size() < 1) throw new IllegalArgumentException();
 
-        for (int index = 1; index < userCommand.size() - 1; index++) {
-            //System.out.println(userCommand.get(index));
+        for (int index = 0; index < userCommand.size() - 1; index++) {
             if (!userCommand.get(index).equals("-r") && !userCommand.get(index).equals("-d")) throw new IllegalArgumentException();
             if (userCommand.get(index).equals("-r")) {
                 logicR = true;
@@ -48,4 +44,5 @@ public class Launcher {
     public String getFilename() {
         return filename;
     }
+
 }
