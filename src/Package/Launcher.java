@@ -2,7 +2,6 @@ package Package;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class Launcher {
 
@@ -33,7 +32,6 @@ public class Launcher {
             if (userCommand.get(index).equals("-d")) {
                 directory = userCommand.get(index + 1);
                 index++;
-                continue;
             }
         }
         filename = userCommand.get(userCommand.size() - 1);
