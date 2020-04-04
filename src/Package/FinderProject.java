@@ -12,8 +12,6 @@ public class FinderProject {
         String filename = start.getFilename();
 
         List<File> list = new Finder(logicR, directory, filename).find();
-        for (File item : list) {
-            System.out.println(item);
-        }
+        for (File item : list) System.out.println(item);
     }
 }
