@@ -10,11 +10,9 @@ class tests {
 
     @Test
     void launcher() throws IllegalArgumentException {
-        assertThrows(IllegalArgumentException.class, () -> {
-            new Launcher(new String[]{"-d", "-r", "test/fold/", "document.txt", "-r"}); //вообще все неправильно
-            new Launcher(new String[]{"-r", "-d", "test/folder"}); //нет файла
-            new Launcher(new String[]{"-d", "test/folder/folder2", "-r", "document.txt", "hello.txt", "document.txt", "hello.txt"}); //слишком много parts в строке
-        });
+        assertThrows(IllegalArgumentException.class, () -> new Launcher(new String[]{"-d", "-r", "test/fold/", "document.txt", "-r"}));
+        assertThrows(IllegalArgumentException.class, () -> new Launcher(new String[]{"-d", "test/folder"}));
+        assertThrows(IllegalArgumentException.class, () -> new Launcher(new String[]{"-d", "test/folder/folder2", "-r", "document.txt", "hello.txt", "document.txt", "hello.txt"}));
     }
 
     @Test
