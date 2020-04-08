@@ -13,25 +13,20 @@ public class Launcher {
     }
 
     private void launcher() {
-
         for (int index = 0; index < args.length - 1; index++) {
-            if (args[index].equals("-r") || args[index].equals("-d")) {
-                switch (args[index]) {
-                    case "-r": {
-                        logicR = true;
-                        break;
-                    }
-                    case "-d": {
-                        directory = args[index + 1];
-                        index++;
-                        break;
-                    }
+            switch (args[index]) {
+                case "-r": {
+                    logicR = true;
+                    break;
                 }
-            } else throw new IllegalArgumentException("Некорректный аргумент");
+                case "-d": {
+                    directory = args[index + 1];
+                    index++;
+                    break;
+                }
+            }
         }
         filename = args[args.length - 1];
-
-        if (!logicR && args.length == 2) throw new IllegalArgumentException("Некорректная длина массива");
     }
 
     public boolean getLogicR() {
