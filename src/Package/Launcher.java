@@ -13,18 +13,22 @@ public class Launcher {
     }
 
     private void launcher() {
+        if (args.length > 4 || args.length < 1) throw new IllegalArgumentException("Некорректная длина массива");
         for (int index = 0; index < args.length - 1; index++) {
-            switch (args[index]) {
-                case "-r": {
-                    logicR = true;
-                    break;
+            if (args[index].equals("-r") || args[index].equals("-d")) {
+                switch (args[index]) {
+                    case "-r": {
+                        logicR = true;
+                        break;
+                    }
+                    case "-d": {
+                        directory = args[index + 1];
+                        index++;
+                        break;
+                    }
                 }
-                case "-d": {
-                    directory = args[index + 1];
-                    index++;
-                    break;
-                }
-            }
+            } else throw new IllegalArgumentException("Некорректный аргумент");
+            if (!logicR && args.length == 2) throw new IllegalArgumentException("Некорректная длина массива");
         }
         filename = args[args.length - 1];
     }
