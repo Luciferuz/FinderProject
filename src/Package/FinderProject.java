@@ -5,6 +5,11 @@ import java.util.List;
 public class FinderProject {
 
     public static void main(String[] args) {
+        if (args.length > 4 || args.length < 1) {
+            System.exit(1);
+            throw new IllegalArgumentException("Некорректная длина массива");
+        }
+
         Launcher start = new Launcher(args);
 
         boolean logicR = start.getLogicR();
