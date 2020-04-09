@@ -14,22 +14,19 @@ public class Launcher {
 
     private void launcher() {
         if (args.length > 4) throw new IllegalArgumentException("Аргументов слишком много");
-        if (args.length < 1) throw new IllegalArgumentException("Аргументов слишком мало");
+        if (args.length < 1) throw new IllegalArgumentException("Отсутствует параметр filename");
         int index;
         for (index = 0; index < args.length - 1; index++) {
             switch (args[index]) {
-                case "-r": {
+                case "-r":
                     logicR = true;
                     break;
-                }
-                case "-d": {
+                case "-d":
                     directory = args[index + 1];
                     index++;
                     break;
-                }
-                default: {
-                    throw new IllegalArgumentException("Введен недопустимый аргумент или какой-то параметр указан несколько раз");
-                }
+                default:
+                    throw new IllegalArgumentException("Введен недопустимый аргумент " + args[index]);
             }
 
         }
