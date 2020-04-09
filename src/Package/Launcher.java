@@ -13,23 +13,27 @@ public class Launcher {
     }
 
     private void launcher() {
-        if (args.length > 4 || args.length < 1) throw new IllegalArgumentException("Некорректная длина массива");
-        for (int index = 0; index < args.length - 1; index++) {
-            if (args[index].equals("-r") || args[index].equals("-d")) {
-                switch (args[index]) {
-                    case "-r": {
-                        logicR = true;
-                        break;
-                    }
-                    case "-d": {
-                        directory = args[index + 1];
-                        index++;
-                        break;
-                    }
+        if (args.length > 4) throw new IllegalArgumentException("Аргументов слишком много");
+        if (args.length < 1) throw new IllegalArgumentException("Аргументов слишком мало");
+        int index;
+        for (index = 0; index < args.length - 1; index++) {
+            switch (args[index]) {
+                case "-r": {
+                    logicR = true;
+                    break;
                 }
-            } else throw new IllegalArgumentException("Некорректный аргумент");
-            if (!logicR && args.length == 2) throw new IllegalArgumentException("Некорректная длина массива");
+                case "-d": {
+                    directory = args[index + 1];
+                    index++;
+                    break;
+                }
+                default: {
+                    throw new IllegalArgumentException("Введен недопустимый аргумент или какой-то параметр указан несколько раз");
+                }
+            }
+
         }
+        if (index != args.length - 1) throw new IllegalArgumentException("Отсутствует параметр filename");
         filename = args[args.length - 1];
     }
 
